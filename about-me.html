@@ -12,6 +12,24 @@
       rel="stylesheet"
     />
     <style>
+      body {
+        margin: 0;
+        background-color: #e0d2b4; /* Match the background color */
+        font-size: 16px; /* Default font size */
+      }
+
+      @media (max-width: 1200px) {
+        body {
+          font-size: 14px; /* Adjust font size for smaller screens */
+        }
+      }
+
+      @media (max-width: 800px) {
+        body {
+          font-size: 12px; /* Adjust font size for smaller screens */
+        }
+      }
+
       .klons-site {
         background-color: #e0d2b4;
         display: flex;
@@ -47,38 +65,38 @@
       .klons-site .banner {
         position: absolute;
         width: 100%;
-        height: 4px;
-        top: 106px;
+        height: 0.25rem; /* Using rem units */
+        top: 6.625rem;
         background-color: #474747;
         z-index: 1;
       }
 
       .klons-site .banner-2 {
-        top: 146px;
+        top: 9.125rem;
         position: absolute;
         width: 100%;
-        height: 2px;
+        height: 0.125rem;
         background-color: #474747;
         z-index: 1;
       }
 
       .klons-site .banner-3 {
-        top: 112px;
+        top: 7rem;
         position: absolute;
         width: 100%;
-        height: 2px;
+        height: 0.125rem;
         background-color: #474747;
         z-index: 1;
       }
 
       .klons-site .text-wrapper {
         position: absolute;
-        top: 31px;
-        left: 0px;
+        top: 2rem;
+        left: 0;
         font-family: "Rye", Helvetica, sans-serif;
         font-weight: 400;
         color: #474747;
-        font-size: 48px;
+        font-size: clamp(2rem, 4vw, 3rem); /* Using clamp to set min, preferred, and max sizes */
         letter-spacing: 0;
         line-height: normal;
         z-index: 1;
@@ -86,12 +104,12 @@
 
       .klons-site .text-wrapper-2 {
         position: absolute;
-        top: 120px;
-        right: 0px;
+        top: 7.5rem;
+        right: 0;
         font-family: "Kantumruy", Helvetica, sans-serif;
         font-weight: 700;
         color: #848484;
-        font-size: 12px;
+        font-size: clamp(0.75rem, 1.5vw, 1rem); /* Using clamp for scaling */
         text-align: right;
         letter-spacing: 0;
         line-height: normal;
@@ -100,13 +118,12 @@
 
       .klons-site .text-wrapper-3 {
         position: absolute;
-        height: 22px;
-        top: 120px;
-        left: 0px;
+        top: 7.5rem;
+        left: 0;
         font-family: "Kantumruy", Helvetica, sans-serif;
         font-weight: 700;
         color: #848484;
-        font-size: 12px;
+        font-size: clamp(0.75rem, 1.5vw, 1rem); /* Using clamp for scaling */
         text-align: right;
         letter-spacing: 0;
         line-height: normal;
@@ -116,13 +133,12 @@
 
       .klons-site .text {
         position: absolute;
-        height: 22px;
-        top: 120px;
-        left: 153px;
+        top: 7.5rem;
+        left: 9.5625rem;
         font-family: "Kantumruy", Helvetica, sans-serif;
         font-weight: 700;
         color: #848484;
-        font-size: 12px;
+        font-size: clamp(0.75rem, 1.5vw, 1rem); /* Using clamp for scaling */
         text-align: right;
         letter-spacing: 0;
         line-height: normal;
@@ -131,13 +147,12 @@
 
       .klons-site .text-wrapper-4 {
         position: absolute;
-        height: 22px;
-        top: 120px;
-        left: 50px;
+        top: 7.5rem;
+        left: 3.125rem;
         font-family: "Kantumruy", Helvetica, sans-serif;
         font-weight: 700;
         color: #848484;
-        font-size: 12px;
+        font-size: clamp(0.75rem, 1.5vw, 1rem); /* Using clamp for scaling */
         text-align: right;
         letter-spacing: 0;
         line-height: normal;
@@ -152,13 +167,13 @@
         align-items: center;
         width: 100%;
         height: 100%;
-        margin-top: 200px;
+        margin-top: 12.5rem;
         z-index: 1;
       }
 
       .content p {
         font-family: "Kantumruy", Helvetica, sans-serif;
-        font-size: 24px;
+        font-size: clamp(1rem, 2.5vw, 1.5rem); /* Using clamp to set min, preferred, and max sizes */
         color: #848484;
         text-align: center;
       }
