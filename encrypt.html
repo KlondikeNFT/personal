@@ -5,31 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Pattern Font Generation</title>
     <style>
+        body {
+            background-color: #e0d2b4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
         .feed-container {
             display: flex;
             justify-content: space-around;
+            width: 90%;
+            max-width: 1200px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
         .feed {
             border: 1px solid black;
-            width: 200px;
+            width: 100%;
+            max-width: 300px;
             height: 300px;
             padding: 10px;
             overflow-y: auto;
             position: relative;
             background-color: white;
+            margin: 10px;
         }
         .post-input {
-            width: 200px;
+            width: 100%;
+            max-width: 300px;
             margin-top: 10px;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
         }
         .submit-button {
             width: 100%;
+            max-width: 300px;
             padding: 5px;
             margin-top: 5px;
             background-color: lightgrey;
             border: 1px solid grey;
             cursor: pointer;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
         }
         .pattern {
             display: inline-block;
@@ -50,12 +71,14 @@
         .pattern div.green { background: green; }
         .process-log {
             border: 1px solid black;
-            width: 100%;
+            width: 90%;
+            max-width: 1200px;
             height: 200px;
             margin-top: 20px;
             padding: 10px;
             overflow-y: auto;
             white-space: pre-wrap;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
         }
     </style>
     <!-- Include opentype.js for font creation -->
