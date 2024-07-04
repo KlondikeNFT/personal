@@ -190,11 +190,11 @@
         font-family: "Kantumruy", Helvetica, sans-serif;
         font-weight: 400;
         color: #848484;
-        font-size: 2vw; /* Using vw units for proportional size */
-        max-font-size: 1rem; /* Ensuring maximum size */
+        font-size: 1rem; /* Using rem units */
         text-align: center;
         padding: 0;
         width: 80%;
+        max-width: 300px;
       }
 
       .creations {
@@ -283,36 +283,6 @@
           transform: translate(200vw, -200vh);
         }
       }
-
-      @media (max-width: 1200px) {
-        .profile p {
-          font-size: 1.75vw; /* Adjust font size for smaller screens */
-          max-font-size: 0.875rem; /* Ensuring maximum size */
-        }
-
-        .creations .folders p, .creations h2 {
-          font-size: 0.875rem; /* Adjust text size for smaller screens */
-        }
-
-        .creations .folders img {
-          width: 7.5rem; /* Adjust image size for smaller screens */
-        }
-      }
-
-      @media (max-width: 800px) {
-        .profile p {
-          font-size: 1.5vw; /* Adjust font size for smaller screens */
-          max-font-size: 0.75rem; /* Ensuring maximum size */
-        }
-
-        .creations .folders p, .creations h2 {
-          font-size: 0.75rem; /* Adjust text size for smaller screens */
-        }
-
-        .creations .folders img {
-          width: 6.25rem; /* Adjust image size for smaller screens */
-        }
-      }
     </style>
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
@@ -334,6 +304,20 @@
 
         const bee = document.querySelector(".bee");
 
+        function preloadImage(url) {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.src = url;
+            img.onload = resolve;
+          });
+        }
+
+        async function initializeBee() {
+          await preloadImage("bee.GIF");
+          bee.style.display = "block";
+          startBeeAnimation();
+        }
+
         function startBeeAnimation() {
           bee.style.animation = "fly 10s linear infinite";
           bee.style.animationDelay = `${Math.random() * 5}s`;
@@ -354,7 +338,7 @@
         bee.addEventListener("animationiteration", startBeeAnimation);
         bee.addEventListener("click", shootOffBee);
 
-        startBeeAnimation();
+        initializeBee();
       });
     </script>
   </head>
@@ -404,7 +388,7 @@
             </div>
           </div>
         </div>
-        <img src="bee.GIF" class="bee" alt="Flying Bee" />
+        <img src="bee.GIF" class="bee" alt="Flying Bee" style="display: none;" />
       </div>
     </div>
   </body>
