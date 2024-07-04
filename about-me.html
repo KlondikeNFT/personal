@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me</title>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kantumruy:wght@700&family=Rye&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .klons-site {
+        background-color: #e0d2b4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      .klons-site .div {
+        background-color: #e0d2b4;
+        width: 90%;
+        height: 90%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+        overflow-y: scroll;
+        padding: 20px;
+      }
+
+      .klons-site .bg {
+        position: absolute;
+        width: 250%;
+        height: 100%;
+        top: 150px;
+        background-color: #dbcdb1;
+        z-index: 0;
+      }
+
+      .klons-site .banner {
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        top: 106px;
+        background-color: #474747;
+        z-index: 1;
+      }
+
+      .klons-site .banner-2 {
+        top: 146px;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #474747;
+        z-index: 1;
+      }
+
+      .klons-site .banner-3 {
+        top: 112px;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #474747;
+        z-index: 1;
+      }
+
+      .klons-site .text-wrapper {
+        position: absolute;
+        top: 31px;
+        left: 0px;
+        font-family: "Rye", Helvetica, sans-serif;
+        font-weight: 400;
+        color: #474747;
+        font-size: 48px;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+      }
+
+      .klons-site .text-wrapper-2 {
+        position: absolute;
+        top: 120px;
+        right: 0px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 700;
+        color: #848484;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+      }
+
+      .klons-site .text-wrapper-3 {
+        position: absolute;
+        height: 22px;
+        top: 120px;
+        left: 0px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 700;
+        color: #848484;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+        text-decoration: none;
+      }
+
+      .klons-site .text {
+        position: absolute;
+        height: 22px;
+        top: 120px;
+        left: 153px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 700;
+        color: #848484;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+      }
+
+      .klons-site .text-wrapper-4 {
+        position: absolute;
+        height: 22px;
+        top: 120px;
+        left: 50px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 700;
+        color: #848484;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+        text-decoration: none;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        margin-top: 200px;
+        z-index: 1;
+      }
+
+      .content p {
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-size: 24px;
+        color: #848484;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="klons-site">
+      <div class="div">
+        <div class="bg"></div>
+        <div class="banner"></div>
+        <div class="banner-2"></div>
+        <div class="banner-3"></div>
+        <div class="text-wrapper">Klondike</div>
+        <a href="index.html" class="text-wrapper-3 clickable">Home</a>
+        <a href="about-me.html" class="text-wrapper-4 clickable">About Me</a>
+        <div id="current-date" class="text-wrapper-2"></div>
+        <div class="content">
+          <p>People call me Klon.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const dateElement = document.getElementById("current-date");
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      const today = new Date();
+      dateElement.textContent = today.toLocaleDateString("en-US", options);
+    </script>
+  </body>
+</html>

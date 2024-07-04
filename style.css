@@ -1,0 +1,119 @@
+.klons-site {
+    background-color: #e0d2b4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  .klons-site .div {
+    background-color: #e0d2b4;
+    width: 90%;
+    height: 90%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .klons-site .bg {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    top: 12%;
+    background-color: #dbcdb1;
+  }
+  
+  .klons-site .banner {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    top: 106px;
+    background-color: #474747;
+  }
+  
+  .klons-site .banner-2 {
+    top: 146px;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #474747;
+  }
+  
+  .klons-site .banner-3 {
+    top: 112px;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #474747;
+  }
+  
+  .klons-site .text-wrapper {
+    position: absolute;
+    top: 31px;
+    left: 0px;
+    font-family: "Rye-Regular", Helvetica;
+    font-weight: 400;
+    color: #474747;
+    font-size: 48px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .klons-site .text-wrapper-2 {
+    position: absolute;
+    top: 125px;
+    right: 0px;
+    font-family: "Kantumruy-Bold", Helvetica;
+    font-weight: 700;
+    color: #848484;
+    font-size: 12px;
+    text-align: right;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .klons-site .text-wrapper-3 {
+    position: absolute;
+    height: 22px;
+    top: 125px;
+    left: 0px;
+    font-family: "Kantumruy-Bold", Helvetica;
+    font-weight: 700;
+    color: #848484;
+    font-size: 12px;
+    text-align: right;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .klons-site .text {
+    position: absolute;
+    height: 22px;
+    top: 118px;
+    left: 153px;
+    font-family: "Kantumruy-Bold", Helvetica;
+    font-weight: 700;
+    color: #848484;
+    font-size: 12px;
+    text-align: right;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .klons-site .text-wrapper-4 {
+    position: absolute;
+    height: 22px;
+    top: 125px;
+    left: 50px;
+    font-family: "Kantumruy-Bold", Helvetica;
+    font-weight: 700;
+    color: #848484;
+    font-size: 12px;
+    text-align: right;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  

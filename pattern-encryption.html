@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pattern Encryption Example</title>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kantumruy:wght@700&family=Rye&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .klons-site {
+        background-color: #e0d2b4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      .klons-site .div {
+        background-color: #e0d2b4;
+        width: 90%;
+        height: 90%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+        overflow-y: scroll;
+        padding: 20px;
+      }
+
+      .klons-site .bg {
+        top: 146px;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #474747;
+        z-index: 1;
+      }
+
+      .klons-site .banner {
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        top: 106px;
+        background-color: #474747;
+        z-index: 1;
+      }
+
+      .klons-site .banner-2 {
+        top: 146px;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #474747;
+        z-index: 1;
+      }
+
+      .klons-site .banner-3 {
+        top: 112px;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #474747;
+        z-index: 1;
+      }
+
+      .klons-site .text-wrapper {
+        position: absolute;
+        top: 31px;
+        left: 0px;
+        font-family: "Rye", Helvetica, sans-serif;
+        font-weight: 400;
+        color: #474747;
+        font-size: 48px;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+      }
+
+      .klons-site .text-wrapper-2 {
+        position: absolute;
+        top: 120px;
+        right: 0px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 700;
+        color: #848484;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+      }
+
+      .klons-site .text-wrapper-3 {
+        position: absolute;
+        height: 22px;
+        top: 120px;
+        left: 0px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 700;
+        color: #848484;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+        text-decoration: none;
+      }
+
+      .klons-site .text {
+        position: absolute;
+        height: 22px;
+        top: 120px;
+        left: 153px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 700;
+        color: #848484;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+      }
+
+      .klons-site .text-wrapper-4 {
+        position: absolute;
+        height: 22px;
+        top: 120px;
+        left: 50px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 700;
+        color: #848484;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+        text-decoration: none;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 200px;
+        z-index: 1;
+      }
+
+      .content h1,
+      .content h2,
+      .content h3,
+      .content p {
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        color: #474747;
+      }
+
+      .content h1 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .content h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      .content h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .content p {
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        line-height: 1.5;
+      }
+
+      .content ul {
+        list-style-type: disc;
+        margin-left: 20px;
+      }
+
+      .content ul li {
+        font-size: 16px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 400;
+        color: #474747;
+        margin-bottom: 5px;
+      }
+
+      .clickable {
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .example-container {
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .pattern-container {
+        width: 500px;
+        height: 200px;
+        border: 2px solid #b8ac93;
+        margin-bottom: 10px;
+        position: relative;
+        background-color: #cdc0a3;
+      }
+
+      .pattern {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        transition: all 1s ease;
+      }
+
+      .red {
+        background: red;
+      }
+      .blue {
+        background: blue;
+      }
+      .yellow {
+        background: #dfd600;
+      }
+      .green {
+        background: green;
+      }
+
+      .post-input {
+        width: 490px;
+        margin-top: 10px;
+        padding: 5px;
+        border: 2px solid #b8ac93;
+        background-color: #cdc0a3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="klons-site">
+      <div class="div">
+        <div class="bg"></div>
+        <div class="banner"></div>
+        <div class="banner-2"></div>
+        <div class="banner-3"></div>
+        <div class="text-wrapper">Klondike</div>
+        <a href="index.html" class="text-wrapper-3 clickable">Home</a>
+        <a href="about-me.html" class="text-wrapper-4 clickable">About Me</a>
+        <div id="current-date" class="text-wrapper-2"></div>
+        <div class="content">
+          <h1>
+            Klondike's Pattern Encryption: A Novel Approach to Data Security
+          </h1>
+          <h2>Abstract</h2>
+          <p>
+            Klondike's Pattern Encryption is a groundbreaking encryption method
+            that combines visual pattern-based encoding with traditional
+            cryptographic techniques. This approach aims to enhance data
+            security by introducing a unique layer of obfuscation through visual
+            patterns, making it difficult for unauthorized entities to decipher
+            the encrypted data. The method integrates salt, hashing, and AES
+            encryption, ensuring robust protection against various attack
+            vectors. This white paper details the conceptual framework,
+            methodology, and potential applications of Klondike's Pattern
+            Encryption.
+          </p>
+          <h2>Introduction</h2>
+          <p>
+            In the rapidly evolving landscape of data security, traditional
+            cryptographic methods face increasing challenges from sophisticated
+            attack techniques. Klondike's Pattern Encryption addresses these
+            challenges by adding a novel dimension to data encryption—visual
+            patterns. By leveraging the human ability to recognize and interpret
+            visual cues, this method provides an additional layer of security
+            that complements existing cryptographic standards.
+          </p>
+          <h2>Conceptual Framework</h2>
+          <h3>Visual Pattern Encoding</h3>
+          <p>
+            At the core of Klondike's Pattern Encryption is the conversion of
+            text into unique visual patterns. Each character or set of
+            characters is represented by a specific arrangement of colored
+            lines, with variations in position and rotation. These patterns are
+            not only visually distinct but also designed to be resistant to
+            common pattern recognition and decryption techniques.
+          </p>
+          <h3>Integration with Traditional Cryptography</h3>
+          <p>
+            To ensure comprehensive security, Klondike's Pattern Encryption
+            incorporates traditional cryptographic elements:
+          </p>
+          <ul>
+            <li>
+              <strong>Salt:</strong> Random data is added to the plaintext
+              before encryption to prevent dictionary attacks and ensure that
+              identical plaintexts yield different encrypted outputs.
+            </li>
+            <li>
+              <strong>Hashing:</strong> A cryptographic hash function is applied
+              to the salted plaintext, producing a fixed-size hash value that
+              uniquely represents the data.
+            </li>
+            <li>
+              <strong>AES Encryption:</strong> The hashed output is then
+              encrypted using the Advanced Encryption Standard (AES), a widely
+              recognized and secure symmetric encryption algorithm.
+            </li>
+          </ul>
+          <h2>Methodology</h2>
+          <h3>Step 1: Pre-processing</h3>
+          <ul>
+            <li>
+              <strong>Salt Generation:</strong> Generate a random salt value and
+              append it to the plaintext.
+            </li>
+            <li>
+              <strong>Pattern Mapping:</strong> Convert the salted plaintext
+              into a series of visual patterns based on predefined rules for
+              line positions and rotations.
+            </li>
+          </ul>
+          <h3>Step 2: Hashing</h3>
+          <ul>
+            <li>
+              <strong>Hash Function Application:</strong> Apply a secure hash
+              function (e.g., SHA-256) to the visual pattern representation,
+              producing a unique hash value.
+            </li>
+          </ul>
+          <h3>Step 3: AES Encryption</h3>
+          <ul>
+            <li>
+              <strong>Key Derivation:</strong> Derive a cryptographic key from
+              the hashed value using a key derivation function (e.g., PBKDF2).
+            </li>
+            <li>
+              <strong>AES Encryption:</strong> Encrypt the hashed value with the
+              derived key using AES.
+            </li>
+          </ul>
+          <h3>Step 4: Storage and Transmission</h3>
+          <ul>
+            <li>
+              <strong>Encoded Output:</strong> The final encrypted output
+              consists of the AES-encrypted hash and the visual pattern
+              representation. This combination ensures that both the visual and
+              cryptographic components are necessary for decryption.
+            </li>
+          </ul>
+          <h2>Security Analysis</h2>
+          <h3>Resistance to Pattern Recognition</h3>
+          <p>
+            The visual patterns used in Klondike's Pattern Encryption are
+            designed to be highly complex and resistant to automated recognition
+            techniques. The use of colored lines and varied rotations adds a
+            significant layer of complexity, making it difficult for attackers
+            to reverse-engineer the patterns.
+          </p>
+          <h3>Enhanced Obfuscation</h3>
+          <p>
+            By combining visual patterns with traditional cryptographic methods,
+            Klondike's Pattern Encryption achieves a higher level of
+            obfuscation. Even if an attacker were to bypass one layer of
+            security, the presence of additional layers (salt, hashing, and AES)
+            ensures that the data remains protected.
+          </p>
+          <h3>Robustness Against Attacks</h3>
+          <ul>
+            <li>
+              <strong>Brute Force Attacks:</strong> The integration of salt and
+              hashing makes it computationally infeasible to perform brute force
+              attacks, as each attempt requires re-processing the entire
+              encryption pipeline.
+            </li>
+            <li>
+              <strong>Dictionary Attacks:</strong> The use of salt ensures that
+              identical plaintexts result in different encrypted outputs,
+              rendering dictionary attacks ineffective.
+            </li>
+            <li>
+              <strong>Pattern Decryption:</strong> The complexity of the visual
+              patterns adds an additional barrier to unauthorized decryption
+              attempts.
+            </li>
+          </ul>
+          <h2>Applications</h2>
+          <h3>Secure Communications</h3>
+          <p>
+            Klondike's Pattern Encryption can be employed in secure messaging
+            systems, ensuring that intercepted messages are indecipherable
+            without the necessary visual and cryptographic keys.
+          </p>
+          <h3>Data Storage</h3>
+          <p>
+            Sensitive data stored in databases can benefit from this encryption
+            method, providing an extra layer of protection against data
+            breaches.
+          </p>
+          <h3>Digital Transactions</h3>
+          <p>
+            In digital payment systems, Klondike's Pattern Encryption can secure
+            transaction details, safeguarding against unauthorized access and
+            fraud.
+          </p>
+          <h2>Conclusion</h2>
+          <p>
+            Klondike's Pattern Encryption represents a significant advancement
+            in data security, combining the strengths of visual pattern
+            recognition and traditional cryptographic techniques. By introducing
+            a novel layer of obfuscation through visual patterns, this method
+            enhances the robustness of data protection against various attack
+            vectors. Future work will focus on optimizing the pattern generation
+            process and exploring additional applications of this innovative
+            encryption method.
+          </p>
+          <h2>References</h2>
+          <ul>
+            <li>
+              Schneier, B. (1996). Applied Cryptography: Protocols, Algorithms,
+              and Source Code in C. John Wiley & Sons.
+            </li>
+            <li>
+              Ferguson, N., & Schneier, B. (2003). Practical Cryptography. John
+              Wiley & Sons.
+            </li>
+            <li>
+              Katz, J., & Lindell, Y. (2007). Introduction to Modern
+              Cryptography. CRC Press.
+            </li>
+            <li>
+              Menezes, A. J., van Oorschot, P. C., & Vanstone, S. A. (1996).
+              Handbook of Applied Cryptography. CRC Press.
+            </li>
+          </ul>
+
+          <div class="example-container">
+            <h2>Example of Klondike's Pattern Encryption</h2>
+            <div class="pattern-container" id="pattern1">
+              <div class="pattern red"></div>
+              <div class="pattern blue"></div>
+              <div class="pattern yellow"></div>
+              <div class="pattern green"></div>
+              <div class="pattern red"></div>
+              <div class="pattern blue"></div>
+            </div>
+            <input
+              type="text"
+              id="postText"
+              class="post-input"
+              placeholder="Write text..."
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const directions = [
+        { x: 0, y: -10 },
+        { x: 10, y: -10 },
+        { x: 10, y: 0 },
+        { x: 10, y: 10 },
+        { x: 0, y: 10 },
+        { x: -10, y: 10 },
+        { x: -10, y: 0 },
+        { x: -10, y: -10 },
+      ];
+
+      function updatePattern(text) {
+        const container = document.getElementById("pattern1");
+        const patterns = container.getElementsByClassName("pattern");
+
+        for (let i = 0; i < patterns.length; i++) {
+          let cumulativeX = 0;
+          let cumulativeY = 0;
+          let cumulativeRotation = 0;
+
+          for (let j = 0; j < text.length; j++) {
+            const char = text.charCodeAt(j) || 0;
+            const direction = directions[(char + i + j) % directions.length];
+            const rotation = (char + i * 45 + j * 30) % 360;
+
+            cumulativeX += direction.x;
+            cumulativeY += direction.y;
+            cumulativeRotation += rotation;
+          }
+
+          patterns[i].style.left = `calc(50% + ${cumulativeX}px)`;
+          patterns[i].style.top = `calc(50% + ${cumulativeY}px)`;
+          patterns[i].style.transform = `rotate(${cumulativeRotation}deg)`;
+        }
+      }
+
+      document
+        .getElementById("postText")
+        .addEventListener("input", function () {
+          updatePattern(this.value);
+        });
+
+      const dateElement = document.getElementById("current-date");
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      const today = new Date();
+      dateElement.textContent = today.toLocaleDateString("en-US", options);
+    </script>
+  </body>
+</html>

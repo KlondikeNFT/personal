@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Pattern Font Generation</title>
+    <style>
+        .feed-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .feed {
+            border: 1px solid black;
+            width: 200px;
+            height: 300px;
+            padding: 10px;
+            overflow-y: auto;
+            position: relative;
+            background-color: white;
+        }
+        .post-input {
+            width: 200px;
+            margin-top: 10px;
+        }
+        .submit-button {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            background-color: lightgrey;
+            border: 1px solid grey;
+            cursor: pointer;
+        }
+        .pattern {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            position: relative;
+        }
+        .pattern div {
+            position: absolute;
+            width: 4px;
+            height: 20px;
+            transition: all 0.5s ease;
+        }
+        .pattern div.red { background: red; }
+        .pattern div.blue { background: blue; }
+        .pattern div.yellow { background: #DFD600; }
+        .pattern div.green { background: green; }
+        .process-log {
+            border: 1px solid black;
+            width: 100%;
+            height: 200px;
+            margin-top: 20px;
+            padding: 10px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+    <!-- Include opentype.js for font creation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/opentype.js/1.3.4/opentype.min.js"></script>
+    <!-- Include CryptoJS for hashing and encryption -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <div class="feed-container">
+        <div>
+            <div class="feed" id="feed1">
+                <div class="pattern" id="pattern1">
+                    <div class="red" style="top: 0; left: 0; transform: rotate(0deg);"></div>
+                    <div class="blue" style="top: 0; left: 0; transform: rotate(0deg);"></div>
+                    <div class="yellow" style="top: 0; left: 0; transform: rotate(0deg);"></div>
+                    <div class="green" style="top: 0; left: 0; transform: rotate(0deg);"></div>
+                </div>
+            </div>
+            <input type="text" id="postText1" class="post-input" placeholder="Write post . . .">
+            <button class="submit-button" onclick="submitPost('postText1')">Submit</button>
+        </div>
+        <div>
+            <div class="feed" id="feed2"></div>
+            <input type="text" id="postText2" class="post-input" placeholder="Write post . . .">
+            <button class="submit-button" onclick="submitPost('postText2')">Submit</button>
+        </div>
+    </div>
+    <div class="process-log" id="processLog"></div>
+
+    <script>
+        const patternToCharMap = {};
+        const charToPatternMap = {};
+        const baseCharCode = 0xE000; // Starting Unicode character in the Private Use Area
+        let nextCharCode = baseCharCode;
+
+        function getPatternKey(pattern) {
+            return pattern.map(pos => `${pos.x}-${pos.y}-${pos.rotation}`).join('|');
+        }
+
+        function getCharForPattern(pattern) {
+            const key = getPatternKey(pattern);
+            if (!(key in patternToCharMap)) {
+                patternToCharMap[key] = String.fromCharCode(nextCharCode);
+                charToPatternMap[String.fromCharCode(nextCharCode)] = pattern;
+                nextCharCode++;
+            }
+            return patternToCharMap[key];
+        }
+
+        function encodeText(text) {
+            let encodedPatterns = [];
+            let currentPattern = [
+                { x: 20, y: 20, rotation: 0 },
+                { x: 20, y: 20, rotation: 90 },
+                { x: 20, y: 20, rotation: 180 },
+                { x: 20, y: 20, rotation: 270 }
+            ];
+
+            for (let i = 0; i < text.length; i++) {
+                const char = text.charAt(i);
+                const charCode = char.charCodeAt(0);
+                const newPattern = currentPattern.map((pos, index) => {
+                    const xOffset = (charCode >> (index * 2)) & 3;
+                    const yOffset = (charCode >> (index * 2 + 1)) & 3;
+                    const rotation = (charCode * (index + 1)) % 360;
+                    return { x: pos.x + xOffset - 2, y: pos.y + yOffset - 2, rotation: rotation };
+                });
+                encodedPatterns.push(newPattern);
+                currentPattern = newPattern;
+            }
+
+            let encodedString = encodedPatterns.map(getCharForPattern).join('');
+            return encodedString;
+        }
+
+        function decodeText(encodedString) {
+            let patterns = encodedString.split('').map(char => charToPatternMap[char]);
+            let text = '';
+            let currentPattern = [
+                { x: 20, y: 20, rotation: 0 },
+                { x: 20, y: 20, rotation: 90 },
+                { x: 20, y: 20, rotation: 180 },
+                { x: 20, y: 20, rotation: 270 }
+            ];
+
+            for (let i = 0; i < patterns.length; i++) {
+                const pattern = patterns[i];
+                const charCode = pattern.reduce((acc, pos, index) => {
+                    const xOffset = pos.x - currentPattern[index].x + 2;
+                    const yOffset = pos.y - currentPattern[index].y + 2;
+                    const rotation = pos.rotation;
+                    return acc + ((xOffset & 3) << (index * 2)) + ((yOffset & 3) << (index * 2 + 1)) + rotation;
+                }, 0);
+                text += String.fromCharCode(charCode);
+                currentPattern = pattern;
+            }
+
+            return text;
+        }
+
+        function updateVisualPattern(patternId, pattern) {
+            const container = document.getElementById(patternId);
+            container.innerHTML = '';
+            pattern.forEach((pos, index) => {
+                const div = document.createElement('div');
+                div.className = `${['red', 'blue', 'yellow', 'green'][index]}`;
+                div.style.top = `${pos.y}px`;
+                div.style.left = `${pos.x}px`;
+                div.style.transform = `rotate(${pos.rotation}deg)`;
+                container.appendChild(div);
+            });
+        }
+
+        function logProcess(originalText, encodedString, decodedText) {
+            const logElement = document.getElementById('processLog');
+            logElement.textContent = `"${originalText}" ---> ${encodedString} ---> "${decodedText}"`;
+        }
+
+        function updatePattern(feedId, patternId, text) {
+            let encodedString = encodeText(text);
+            let decodedText = decodeText(encodedString);
+
+            if (encodedString.length > 0) {
+                let lastPattern = charToPatternMap[encodedString.charAt(encodedString.length - 1)];
+                updateVisualPattern(patternId, lastPattern);
+                logProcess(text, encodedString, decodedText);
+            }
+        }
+
+        document.getElementById('postText1').addEventListener('input', function() {
+            updatePattern('feed1', 'pattern1', this.value);
+        });
+
+        document.getElementById('postText2').addEventListener('input', function() {
+            updatePattern('feed2', 'pattern1', this.value);
+        });
+
+        function createGlyphPath(pattern) {
+            const path = new opentype.Path();
+            pattern.forEach((pos) => {
+                path.moveTo(pos.x, pos.y);
+                path.lineTo(pos.x + 4 * Math.cos(pos.rotation * Math.PI / 180), pos.y + 20 * Math.sin(pos.rotation * Math.PI / 180));
+            });
+            return path;
+        }
+
+        function createFontFromPatterns(patterns) {
+            const glyphs = [];
+            patterns.forEach((pattern, index) => {
+                const charCode = baseCharCode + index;
+                const path = createGlyphPath(pattern);
+                const glyph = new opentype.Glyph({
+                    name: 'glyph' + charCode,
+                    unicode: charCode,
+                    advanceWidth: 1000,
+                    path: path
+                });
+                glyphs.push(glyph);
+            });
+
+            const font = new opentype.Font({
+                familyName: 'PatternFont',
+                styleName: 'Regular',
+                unitsPerEm: 1000,
+                ascender: 800,
+                descender: -200,
+                glyphs: glyphs
+            });
+
+            return font;
+        }
+
+        function submitPost(inputId) {
+            const text = document.getElementById(inputId).value;
+            const encodedString = encodeText(text);
+            const decodedText = decodeText(encodedString);
+
+            // Generate the font
+            const patterns = encodedString.split('').map(char => charToPatternMap[char]);
+            const font = createFontFromPatterns(patterns);
+
+            // Generate the font binary data
+            const fontData = font.toArrayBuffer();
+            const blob = new Blob([fontData], { type: 'font/otf' });
+            const url = URL.createObjectURL(blob);
+
+            // Create a new style element and add the font to the document
+            const style = document.createElement('style');
+            style.textContent = `
+                @font-face {
+                    font-family: 'PatternFont';
+                    src: url(${url}) format('opentype');
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Display the encoded string in the right container
+            document.getElementById('feed2').textContent = encodedString;
+
+            // Log the process
+            logProcess(text, encodedString, decodedText);
+
+            // Copy the encoded string to the clipboard
+            navigator.clipboard.writeText(encodedString).then(() => {
+                alert('Pattern copied to clipboard');
+            }).catch(err => {
+                console.error('Failed to copy pattern: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

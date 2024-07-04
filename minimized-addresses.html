@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minimized Data Wallet Addresses</title>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kantumruy:wght@700&family=Rye&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .klons-site {
+        background-color: #e0d2b4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      .klons-site .div {
+        background-color: #e0d2b4;
+        width: 90%;
+        height: 90%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+        overflow-y: scroll;
+        padding: 20px;
+      }
+
+      .klons-site .bg {
+        top: 146px;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #474747;
+        z-index: 1;
+      }
+
+      .klons-site .banner {
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        top: 106px;
+        background-color: #474747;
+        z-index: 1;
+      }
+
+      .klons-site .banner-2 {
+        top: 146px;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #474747;
+        z-index: 1;
+      }
+
+      .klons-site .banner-3 {
+        top: 112px;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #474747;
+        z-index: 1;
+      }
+
+      .klons-site .text-wrapper {
+        position: absolute;
+        top: 31px;
+        left: 0px;
+        font-family: "Rye", Helvetica, sans-serif;
+        font-weight: 400;
+        color: #474747;
+        font-size: 48px;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+      }
+
+      .klons-site .text-wrapper-2 {
+        position: absolute;
+        top: 120px;
+        right: 0px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 700;
+        color: #848484;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+      }
+
+      .klons-site .text-wrapper-3 {
+        position: absolute;
+        height: 22px;
+        top: 120px;
+        left: 0px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 700;
+        color: #848484;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+        text-decoration: none;
+      }
+
+      .klons-site .text {
+        position: absolute;
+        height: 22px;
+        top: 120px;
+        left: 153px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 700;
+        color: #848484;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+      }
+
+      .klons-site .text-wrapper-4 {
+        position: absolute;
+        height: 22px;
+        top: 120px;
+        left: 50px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 700;
+        color: #848484;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0;
+        line-height: normal;
+        z-index: 1;
+        text-decoration: none;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 200px;
+        z-index: 1;
+      }
+
+      .content h1,
+      .content h2,
+      .content h3,
+      .content p {
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        color: #474747;
+      }
+
+      .content h1 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .content h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      .content h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .content p {
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        line-height: 1.5;
+      }
+
+      .content ul {
+        list-style-type: disc;
+        margin-left: 20px;
+      }
+
+      .content ul li {
+        font-size: 16px;
+        font-family: "Kantumruy", Helvetica, sans-serif;
+        font-weight: 400;
+        color: #474747;
+        margin-bottom: 5px;
+      }
+
+      .clickable {
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="klons-site">
+      <div class="div">
+        <div class="bg"></div>
+        <div class="banner"></div>
+        <div class="banner-2"></div>
+        <div class="banner-3"></div>
+        <div class="text-wrapper">Klondike</div>
+        <a href="index.html" class="text-wrapper-3 clickable">Home</a>
+        <a href="about-me.html" class="text-wrapper-4 clickable">About Me</a>
+        <div id="current-date" class="text-wrapper-2"></div>
+        <div class="content">
+          <h1>
+            Minimized Data Wallet Addresses: Efficient Management of Transaction
+            Histories
+          </h1>
+          <h2>Abstract</h2>
+          <p>
+            Minimized data wallet addresses introduce an innovative approach to
+            managing transaction histories efficiently by compressing and
+            summarizing transaction data. This method leverages advanced
+            algorithms and data structures to significantly reduce the data
+            overhead, ensuring scalability and quick access. This white paper
+            outlines the conceptual framework, methodology, algorithms, and
+            practical examples of minimized data wallet addresses, emphasizing
+            their advantages in efficiency and scalability.
+          </p>
+          <h2>Introduction</h2>
+          <p>
+            The rapid increase in digital transactions necessitates efficient
+            data storage and management solutions. Traditional wallet addresses
+            often struggle with the sheer volume of transaction data, leading to
+            issues with scalability, speed, and storage requirements. Minimized
+            data wallet addresses offer a solution by compressing transaction
+            histories into a streamlined format, thereby enhancing performance
+            and reducing storage costs.
+          </p>
+          <h2>Conceptual Framework</h2>
+          <h3>Data Minimization</h3>
+          <p>
+            The core principle behind minimized data wallet addresses is data
+            minimization. This involves the use of advanced compression
+            techniques and optimized data structures to store transaction
+            histories in the smallest possible space without compromising on
+            data integrity or accessibility.
+          </p>
+          <h3>Transaction Summarization</h3>
+          <p>
+            Transaction summarization plays a crucial role in minimizing data.
+            Instead of storing detailed records of each transaction, minimized
+            data wallet addresses store summarized information, capturing
+            essential details such as transaction amounts, timestamps, and
+            involved parties. This summary data is then linked to more detailed
+            records stored off-chain or in a secondary storage system, ensuring
+            that full transaction details can be retrieved when necessary.
+          </p>
+          <h3>Efficient Data Structures</h3>
+          <p>
+            To further enhance data efficiency, minimized data wallet addresses
+            utilize specialized data structures such as Merkle trees and hash
+            tables. These structures allow for quick verification and retrieval
+            of transaction summaries while maintaining a compact storage
+            footprint.
+          </p>
+          <h2>Methodology</h2>
+          <h3>Step 1: Wallet Generation</h3>
+          <ul>
+            <li>
+              <strong>Unique Identifier (UID):</strong> Generate a 256-bit
+              random number using a secure random number generator and hash this
+              random number using SHA-3 to produce the UID. The UID ensures each
+              wallet is unique and serves as a foundational element for deriving
+              future wallet addresses.
+            </li>
+            <li>
+              <strong>Private Key:</strong> Use Kyber (a lattice-based
+              post-quantum key exchange mechanism) to generate a public/private
+              key pair. The private key is used for signing transactions and
+              deriving future addresses, providing the necessary security for
+              accessing and controlling the wallet.
+            </li>
+            <li>
+              <strong>Initial Wallet Address:</strong> Use the HMAC-SHA3
+              algorithm with the UID as the key and the public key as the
+              message to produce the initial wallet address, ensuring the
+              initial address is securely derived from both the UID and the
+              public key.
+            </li>
+          </ul>
+          <h3>Step 2: Transaction and Address Evolution</h3>
+          <ul>
+            <li>
+              <strong>Making a Transaction:</strong> The user signs in with
+              their private key. The wallet derives the latest address using the
+              UID and private key. The user initiates a transaction to send a
+              specific amount to another user.
+            </li>
+            <li>
+              <strong>Validation and Compression:</strong> Validators decrypt
+              the current address to verify transaction history using Kyber.
+              They confirm the balance and transaction validity using the Merkle
+              Tree root hash, ensuring the transaction is legitimate and the
+              user has sufficient funds.
+            </li>
+            <li>
+              <strong>Address Evolution:</strong> Update the Merkle Tree with
+              the transaction details and derive a new address from the UID,
+              private key, and the updated Merkle Tree root hash using
+              HMAC-SHA3, generating a new address that includes the compressed
+              transaction history.
+            </li>
+          </ul>
+          <h3>Step 3: Accessing Wallet</h3>
+          <ul>
+            <li>
+              <strong>Automatic Address Update:</strong> The user signs in with
+              their private key. The wallet derives the latest address using the
+              UID and private key, automatically displaying the latest balance
+              and transaction history, providing a seamless user experience.
+            </li>
+          </ul>
+          <h3>Step 4: Ensuring History Integrity</h3>
+          <ul>
+            <li>
+              <strong>Quantum-Resistant Merkle Tree:</strong> Each transaction
+              is hashed using SHA-3 and added as a leaf node in the Merkle Tree.
+              Pairwise hashes of nodes are combined and hashed again,
+              iteratively, until a single root hash is obtained, compressing the
+              transaction history into a single hash that represents the current
+              state of the wallet.
+            </li>
+            <li>
+              <strong>Validator Role:</strong> Validators decrypt the current
+              address using Kyber and verify the Merkle Tree root hash,
+              confirming transaction history and balance.
+            </li>
+          </ul>
+          <h3>Step 5: Address Evolution Algorithm</h3>
+          <ul>
+            <li>
+              <strong>Initial Setup:</strong> Generate UID using SHA-3. Generate
+              private key using Kyber. Derive initial address using HMAC-SHA3
+              with UID and public key.
+            </li>
+            <li>
+              <strong>Transaction Processing:</strong> Initiate a transaction
+              where the user signs in with their private key and the wallet
+              derives the latest address using UID and private key. Validate the
+              transaction by having validators decrypt the current address using
+              Kyber and verify the Merkle Tree root hash. Update the Merkle Tree
+              with transaction details and compute a new Merkle Tree root hash
+              using SHA-3. Generate a new address using HMAC-SHA3 with UID and
+              the new Merkle Tree root hash, updating the central authority with
+              the new address and balance.
+            </li>
+            <li>
+              <strong>Sign-In Process:</strong> The user signs in with their
+              private key, and the wallet derives the latest address using UID
+              and private key, displaying the latest balance and transaction
+              history.
+            </li>
+          </ul>
+          <h3>Step 6: Receiving Funds</h3>
+          <ul>
+            <li>
+              <strong>Sending Funds to a Friend:</strong> The sender obtains the
+              recipient’s latest wallet address and initiates a transaction to
+              send funds to this wallet address.
+            </li>
+            <li>
+              <strong>Updating the Wallet:</strong> When the recipient signs in
+              with their private key, the wallet automatically updates to
+              reflect the new balance and transaction history, generating a new
+              address that incorporates the received transaction.
+            </li>
+          </ul>
+          <h2>Practical Examples</h2>
+          <h3>Example Workflow</h3>
+          <ul>
+            <li>
+              <strong>Initial State:</strong> Wallet Address A: UID:
+              uid_example, Private Key: private_key_example, Initial Address:
+              initial_address_example, Balance: 6.
+            </li>
+            <li>
+              <strong>Transaction 1:</strong> User A Sends 5 to User B: Update
+              Merkle Tree with transaction details, generate new address (AB2)
+              from UID, Private Key A, and Merkle Tree root hash. New address
+              (AB2) includes Merkle Tree root hash, balance: 1.
+            </li>
+            <li>
+              <strong>Receiving Funds:</strong> User B Receives Funds: User B
+              provides their latest wallet address to the sender, who initiates
+              a transaction to send funds to User B’s latest wallet address.
+              When User B signs in, their wallet updates to show the received
+              funds.
+            </li>
+            <li>
+              <strong>Accessing Wallet:</strong> User Signs In: User enters
+              Private Key A. Wallet derives the latest address (AB2) using UID
+              and Private Key A. Wallet AB2 shows balance of 1.
+            </li>
+            <li>
+              <strong>Verification:</strong> Validators: Check Merkle Tree root
+              hash in AB2, confirm transaction history and balance, approve
+              transaction and update central authority.
+            </li>
+          </ul>
+          <h2>Conclusion</h2>
+          <p>
+            By incorporating advanced cryptographic techniques, minimized data
+            wallet addresses ensure secure and efficient management of
+            transaction histories. The use of a unique identifier (UID), Merkle
+            Trees, and secure key derivation functions provides a robust and
+            secure mechanism for handling transactions, enhancing both security
+            and usability. This approach also ensures seamless fund transfers
+            between users, with wallets automatically updating to reflect the
+            latest transactions.
+          </p>
+          <h2>References</h2>
+          <ul>
+            <li>
+              Arora, S., & Barak, B. (2009). Computational Complexity: A Modern
+              Approach. Cambridge University Press.
+            </li>
+            <li>
+              Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C.
+              (2009). Introduction to Algorithms. MIT Press.
+            </li>
+            <li>
+              Ferguson, N., & Schneier, B. (2003). Practical Cryptography. John
+              Wiley & Sons.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const dateElement = document.getElementById("current-date");
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      const today = new Date();
+      dateElement.textContent = today.toLocaleDateString("en-US", options);
+    </script>
+  </body>
+</html>
