@@ -190,11 +190,10 @@
         font-family: "Kantumruy", Helvetica, sans-serif;
         font-weight: 400;
         color: #848484;
-        font-size: 1rem; /* Using rem units */
+        font-size: clamp(0.75rem, 2vw, 1rem); /* Using clamp to set min, preferred, and max sizes */
         text-align: center;
         padding: 0;
         width: 80%;
-        max-width: 300px;
       }
 
       .creations {
