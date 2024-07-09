@@ -78,7 +78,7 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     padding: 0;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap;  /* Added flex-wrap to ensure responsiveness */
 }
 
@@ -135,14 +135,14 @@ body {
     padding: 10px;
     margin-bottom: 20px;
     text-align: center;
-    font-size: 2em;
+    font-size: 200%;
     font-weight: 800;
     font-family: 'STIX Two Text', serif;
 }
 
 .course-banner-sub {
     color: #d1c4a9;
-    font-size: 0.55em;
+    font-size: 55%;
     font-family: 'Kantumruy', Helvetica, sans-serif;
 }
 
