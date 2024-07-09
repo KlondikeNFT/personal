@@ -90,6 +90,7 @@ body {
     flex: 1;
     padding: 0;
     margin: 0;
+    margin-top: 25px;
     box-sizing: border-box;  /* Ensures padding and margin are considered in width/height */
 }
 
