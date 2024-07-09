@@ -1,394 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Klondike</title>
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="styleguide.css" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kantumruy:wght@700&family=Rye&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        font-size: 16px; /* Default font size */
-      }
-
-      @media (max-width: 1200px) {
-        :root {
-          font-size: 14px; /* Adjust font size for smaller screens */
-        }
-      }
-
-      @media (max-width: 800px) {
-        :root {
-          font-size: 12px; /* Adjust font size for smaller screens */
-        }
-      }
-
-      body {
-        margin: 0;
-        background-color: #e0d2b4; /* Match the background color */
-      }
-
-      .klons-site {
-        background-color: #e0d2b4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100vh;
-        box-sizing: border-box;
-      }
-
-      .klons-site .div {
-        background-color: #e0d2b4;
-        width: 90%;
-        height: 90%;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        z-index: 1;
-      }
-
-      .klons-site .bg {
-        position: absolute;
-        width: 100%;
-        height: 90%;
-        top: 14%;
-        background-color: #dbcdb1;
-        z-index: 0;
-      }
-
-      .klons-site .banner {
-        position: absolute;
-        width: 100%;
-        height: 0.25rem; /* Using rem units */
-        top: 6.625rem;
-        background-color: #474747;
-        z-index: 1;
-      }
-
-      .klons-site .banner-2 {
-        top: 9.125rem;
-        position: absolute;
-        width: 100%;
-        height: 0.125rem;
-        background-color: #474747;
-        z-index: 1;
-      }
-
-      .klons-site .banner-3 {
-        top: 7rem;
-        position: absolute;
-        width: 100%;
-        height: 0.125rem;
-        background-color: #474747;
-        z-index: 1;
-      }
-
-      .klons-site .text-wrapper {
-        position: absolute;
-        top: 2rem;
-        left: 0;
-        font-family: "Rye", Helvetica, sans-serif;
-        font-weight: 400;
-        color: #474747;
-        font-size: 3rem; /* Using rem units */
-        letter-spacing: 0;
-        line-height: normal;
-        z-index: 1;
-      }
-
-      .klons-site .text-wrapper-2 {
-        position: absolute;
-        top: 7.5rem;
-        right: 0;
-        font-family: "Kantumruy", Helvetica, sans-serif;
-        font-weight: 700;
-        color: #848484;
-        font-size: 0.75rem; /* Using rem units */
-        text-align: right;
-        letter-spacing: 0;
-        line-height: normal;
-        z-index: 1;
-      }
-
-      .klons-site .text-wrapper-3 {
-        position: absolute;
-        height: 1.375rem;
-        top: 7.5rem;
-        left: 0;
-        font-family: "Kantumruy", Helvetica, sans-serif;
-        font-weight: 700;
-        color: #848484;
-        font-size: 0.75rem; /* Using rem units */
-        text-align: right;
-        letter-spacing: 0;
-        line-height: normal;
-        z-index: 1;
-        text-decoration: none;
-      }
-
-      .klons-site .text {
-        position: absolute;
-        height: 1.375rem;
-        top: 7.5rem;
-        left: 9.5625rem;
-        font-family: "Kantumruy", Helvetica, sans-serif;
-        font-weight: 700;
-        color: #848484;
-        font-size: 0.75rem; /* Using rem units */
-        text-align: right;
-        letter-spacing: 0;
-        line-height: normal;
-        z-index: 1;
-      }
-
-      .klons-site .text-wrapper-4 {
-        position: absolute;
-        height: 1.375rem;
-        top: 7.5rem;
-        left: 3.125rem;
-        font-family: "Kantumruy", Helvetica, sans-serif;
-        font-weight: 700;
-        color: #848484;
-        font-size: 0.75rem; /* Using rem units */
-        text-align: right;
-        letter-spacing: 0;
-        line-height: normal;
-        z-index: 1;
-        text-decoration: none;
-      }
-
-      .content {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        width: 100%;
-        margin-top: 12.5rem;
-        z-index: 1;
-      }
-
-      .profile {
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        width: 30%;
-      }
-
-      .profile img {
-        width: 80%;
-        height: auto;
-      }
-
-      .profile p {
-        font-family: "Kantumruy", Helvetica, sans-serif;
-        font-weight: 400;
-        color: #848484;
-        font-size: clamp(0.75rem, 2vw, 1rem); /* Using clamp to set min, preferred, and max sizes */
-        text-align: center;
-        padding: 0;
-        width: 80%;
-      }
-
-      .creations {
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        width: 70%;
-      }
-
-      .creations h2 {
-        font-family: "Kantumruy", Helvetica, sans-serif;
-        font-weight: 700;
-        color: #848484;
-        font-size: 1.5rem; /* Using rem units */
-        margin-bottom: 0;
-      }
-
-      .creations .folders {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        gap: 1%;
-      }
-
-      .creations .folders div {
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        margin: 0;
-      }
-
-      .creations .folders img {
-        width: 8.75rem; /* Using rem units */
-        height: auto;
-        pointer-events: none;
-      }
-
-      .creations .folders p {
-        font-family: "Kantumruy", Helvetica, sans-serif;
-        font-weight: 400;
-        color: #474747;
-        font-size: 1rem; /* Using rem units */
-        text-align: center;
-        margin-top: 0.625rem;
-      }
-
-      .clickable {
-        cursor: pointer;
-        text-decoration: none;
-        color: inherit;
-      }
-
-      .bee {
-        position: absolute;
-        width: 3.125rem; /* Using rem units */
-        height: 3.125rem;
-        z-index: 2;
-        top: 31.25rem;
-        left: -6.875rem;
-        animation: fly 10s linear infinite;
-      }
-
-      @keyframes fly {
-        0% {
-          transform: translate(-10, -10) rotate(0deg);
-        }
-        25% {
-          transform: translate(25vw, 10vh) rotate(5deg);
-        }
-        50% {
-          transform: translate(50vw, -10vh) rotate(-5deg);
-        }
-        75% {
-          transform: translate(75vw, 15vh) rotate(5deg);
-        }
-        100% {
-          transform: translate(100vw, -15vh) rotate(-5deg);
-        }
-      }
-
-      @keyframes shoot-off {
-        0% {
-          transform: translate(0, 0);
-        }
-        100% {
-          transform: translate(200vw, -200vh);
-        }
-      }
-    </style>
-    <script>
-      document.addEventListener("DOMContentLoaded", (event) => {
-        document.querySelectorAll("img").forEach((img) => {
-          img.addEventListener("contextmenu", (e) => {
-            e.preventDefault();
-          });
-        });
-
-        const dateElement = document.getElementById("current-date");
-        const options = {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        };
-        const today = new Date();
-        dateElement.textContent = today.toLocaleDateString("en-US", options);
-
-        const bee = document.querySelector(".bee");
-
-        function preloadImage(url) {
-          return new Promise((resolve) => {
-            const img = new Image();
-            img.src = url;
-            img.onload = resolve;
-          });
-        }
-
-        async function initializeBee() {
-          await preloadImage("bee.GIF");
-          bee.style.display = "block";
-          startBeeAnimation();
-        }
-
-        function startBeeAnimation() {
-          bee.style.animation = "fly 10s linear infinite";
-          bee.style.animationDelay = `${Math.random() * 5}s`;
-        }
-
-        function shootOffBee() {
-          bee.style.animation = "shoot-off 1s linear forwards";
-          bee.removeEventListener("click", shootOffBee);
-
-          setTimeout(() => {
-            bee.style.left = `${Math.random() * 100 > 50 ? -50 : 100}vw`;
-            bee.style.top = `${Math.random() * 100}vh`;
-            startBeeAnimation();
-            bee.addEventListener("click", shootOffBee);
-          }, Math.random() * 5000 + 2000);
-        }
-
-        bee.addEventListener("animationiteration", startBeeAnimation);
-        bee.addEventListener("click", shootOffBee);
-
-        initializeBee();
-      });
-    </script>
-  </head>
-  <body>
-    <div class="klons-site">
-      <div class="div">
-        <div class="bg"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Querencia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kantumruy:wght@700&family=Rye&family=STIX+Two+Text&display=swap">
+    <link rel="stylesheet" href="header.css">
+</head>
+<body>
+    <div class="header">
+        <div class="text-wrapper">Klondike</div>
         <div class="banner"></div>
         <div class="banner-2"></div>
         <div class="banner-3"></div>
-        <div class="text-wrapper">Klondike</div>
-        <a href="index.html" class="text-wrapper-3 clickable">Home</a>
-        <a href="about-me.html" class="text-wrapper-4 clickable">About Me</a>
-        <div id="current-date" class="text-wrapper-2"></div>
-        <div class="content">
-          <div class="profile">
-            <img src="pfp.svg" alt="Profile Picture" />
-            <p>
-              Here's some stuff I've created. It’s a mix of projects and things
-              I’ve worked on and probably did not finish cause my ADHD. Take a
-              look if you’re interested. Or don’t. Either way, it’s here if you
-              want to check it out.
-            </p>
-          </div>
-          <div class="creations">
-            <h2>Creations</h2>
-            <div class="folders">
-              <a href="pattern-encryption.html" class="clickable">
-                <div>
-                  <img src="pattern-encryption.svg" alt="Pattern Encryption" />
-                </div>
-              </a>
-              <a href="spring-algorithm.html" class="clickable">
-                <div>
-                  <img src="spring-algorithm.svg" alt="Spring Algorithm" />
-                </div>
-              </a>
-              <a href="minimized-addresses.html" class="clickable">
-                <div>
-                  <img
-                    src="minimized-addresses.svg"
-                    alt="Minimized Data Addresses"
-                  />
-                </div>
-              </a>
-              <a href="wallet-generator.html" class="clickable"> </a>
+        <div class="nav-wrapper">
+            <div class="buttons">
+                <a href="index.html" class="button">Home</a>
+                <a href="about-me.html" class="button">About Me</a>
             </div>
-          </div>
+            <div id="current-date" class="date-wrapper"></div>
         </div>
-        <img src="bee.GIF" class="bee" alt="Flying Bee" style="display: none;" />
-      </div>
     </div>
-  </body>
+    <div class="content">
+        <div class="inner-content">
+            <div class="profile">
+                <img src="pfp.svg" alt="Profile Picture">
+                <p>
+                    Here's some stuff I've created. It’s a mix of projects and things
+                    I’ve worked on and probably did not finish cause my ADHD. Take a
+                    look if you’re interested. Or don’t. Either way, it’s here if you
+                    want to check it out.
+                </p>
+            </div>
+        </div>
+        <div class="inner-content">
+            <div class="course-content">
+                <div class="course-banner">
+                    Crypto Made Simple
+                    <div class="course-banner-sub">★ A Duolingo Inspired Course ★</div>
+                </div>
+                <p class="course-description">
+                    More times than not, whenever I mention Bitcoin to someone, they tell me, “I dont understand crypto,” which is why I created this little course. I wanted to make it easy for anyone to learn about cryptocurrency. It’s not just one thing-It’s a mix of technologies and ideas. For instance, cryptography itself dates all the way back to 1900 BC and is actually used by us every single day when you go to unlock your iPhone! My goal is to break it all down so that even a child can understand. Dive in and explore the fascinating world of crypto with me!
+                </p>
+                <a href="#" class="course-button">Check it Out!</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateElement = document.getElementById("current-date");
+            const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+            const today = new Date();
+            dateElement.textContent = today.toLocaleDateString("en-US", options);
+        });
+    </script>
+</body>
 </html>
