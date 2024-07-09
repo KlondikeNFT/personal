@@ -75,11 +75,12 @@ body {
     flex-grow: 1;
     box-sizing: border-box;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
     padding: 0;
-    gap: 10px;
-    flex-wrap: wrap;  /* Added flex-wrap to ensure responsiveness */
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px; /* Added top margin */
 }
 
 .inner-content {
@@ -90,8 +91,7 @@ body {
     flex: 1;
     padding: 0;
     margin: 0;
-    margin-top: 25px;
-    box-sizing: border-box;  /* Ensures padding and margin are considered in width/height */
+    box-sizing: border-box;
 }
 
 .profile {
@@ -135,14 +135,14 @@ body {
     padding: 10px;
     margin-bottom: 20px;
     text-align: center;
-    font-size: 200%;
+    font-size: calc(2vw + 10px); /* Adjusts font size dynamically */
     font-weight: 800;
     font-family: 'STIX Two Text', serif;
 }
 
 .course-banner-sub {
     color: #d1c4a9;
-    font-size: 55%;
+    font-size: calc(1vw + 5px); /* Adjusts font size dynamically */
     font-family: 'Kantumruy', Helvetica, sans-serif;
 }
 
@@ -172,8 +172,21 @@ body {
     font-weight: 800;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 768px) {
     .content {
-        flex-direction: column;  /* Stack inner divs vertically on smaller screens */
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media (min-width: 769px) {
+    .content {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        flex-direction: column;
     }
 }
