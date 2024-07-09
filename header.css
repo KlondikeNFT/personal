@@ -80,7 +80,7 @@ body {
     padding: 10px;
     gap: 20px;
     flex-wrap: wrap;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 .inner-content {
