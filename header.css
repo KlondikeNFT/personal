@@ -78,7 +78,7 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     padding: 0;
-    gap: 5px;
+    gap: 20px;
     flex-wrap: wrap;  /* Added flex-wrap to ensure responsiveness */
 }
 
@@ -103,8 +103,7 @@ body {
 }
 
 .profile img {
-    width: 100%;
-    max-width: 250px;
+    width: 90%;
     height: auto;
     margin-bottom: 20px;
 }
@@ -115,15 +114,14 @@ body {
     color: #848484;
     font-size: small;
     margin: 0 auto;
-    width: 100%;
-    max-width: 250px;
+    width: 90%;
 }
 
 .course-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 90%;
     background-color: #dbcdb1;
     text-align: center;
     color: #484848;
@@ -144,7 +142,7 @@ body {
 
 .course-banner-sub {
     color: #d1c4a9;
-    font-size: 0.6em;
+    font-size: 0.55em;
     font-family: 'Kantumruy', Helvetica, sans-serif;
 }
 
@@ -174,7 +172,7 @@ body {
     font-weight: 800;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 320px) {
     .content {
         flex-direction: column;  /* Stack inner divs vertically on smaller screens */
     }
