@@ -179,13 +179,13 @@ body {
     }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 420px) {
     .content {
         flex-direction: row;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 420px) {
     .content {
         flex-direction: column;
     }
