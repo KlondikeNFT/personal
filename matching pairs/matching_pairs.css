@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.mp-container {
+    width: 80%;
+    max-width: 800px;
+    background-color: #dbcdb1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.mp-header {
+    font-family: 'STIX Two Text', serif;
+    color: #484848;
+}
+
+.matching-pairs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.mp-terms, .mp-definitions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mp-button {
+    padding: 10px;
+    background-color: #dbcdb1;
+    color: #484848;
+    cursor: pointer;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 0 2px #484848, 0 0 0 5px #dbcdb1, 0 0 0 8px #484848;
+    min-height: 100px;  /* Ensuring all buttons have the same height */
+}
+
+.mp-button.correct {
+    color: white;
+    opacity: 0.5;
+}
+
+.mp-button.selected {
+    opacity: 0.5;
+}
+
+#mp-feedback {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
