@@ -4,8 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 1: What is Cryptocurrency?</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kantumruy:wght@700&family=Rye&family=STIX+Two+Text&display=swap">
-    <link rel="stylesheet" href="lesson1.css">
+    <link rel="stylesheet" href="fill in the blank/fill_in_blank.css">
+    <link rel="stylesheet" href="matching pairs/matching_pairs.css">
+    <link rel="stylesheet" href="multiple choice/multiple_choice.css">
+    <link rel="stylesheet" href="true or false/torf.css">
+    <link rel="stylesheet" href="word fill/word_fill.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kantumruy:wght@700&family=Rye&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap">
+    <link rel="stylesheet" href="course/lesson1/lesson1.css">
+    <style>
+        .activity {
+            display: none;
+        }
+        .activity.active {
+            display: block;
+        }
+        .navigation {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .nav-button {
+            margin-top: 50px;
+            padding-left: 25px;
+            padding-right: 25px;
+            background-color: #dbcdb1;
+            color: #484848;
+            cursor: pointer;
+            font-size: 1em;
+            border: none;
+            border-radius: 0;
+            box-shadow: 0 0 0 2px #484848, 0 0 0 5px #dbcdb1, 0 0 0 8px #484848;
+        }
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #dbcdb1;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 0 0 2px #484848, 0 0 0 5px #dbcdb1, 0 0 0 8px #484848;
+        }
+        .modal-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -23,17 +94,131 @@
         </div>
     </div>
     <div class="content">
-        <h1 class="lesson-title">What is Cryptocurrency?</h1>
-        <p>Lesson content goes here...</p>
+        <div class="container" style="box-shadow: none;">
+            <!-- Slide 1: Introduction -->
+            <div class="activity active" id="slide0">
+                <h1 class="header">Lesson 1: What is Cryptocurrency?</h1>
+                <p>Welcome to Lesson 1. In this lesson, you will learn the basics of cryptocurrency, its features, and the technology that underpins it. Let's get started!</p>
+            </div>
+
+            <!-- Activity 1: True or False -->
+            <div class="activity" id="slide1">
+                <h2 class="torf-header">True or False</h2>
+                <p class="torf-question">Cryptocurrency is a type of digital money that can be used online.</p>
+                <div class="torf-buttons">
+                    <button class="torf-answer" data-answer="true">True</button>
+                    <button class="torf-answer" data-answer="false">False</button>
+                </div>
+                <p id="torf-feedback"></p>
+            </div>
+            <script src="true or false/torf.js"></script>
+            
+            <!-- Activity 2: Multiple Choice -->
+            <div class="activity" id="slide2">
+                <h2 class="mc-header">Multiple Choice</h2>
+                <p class="mc-question">What is the primary feature of cryptocurrency?</p>
+                <div class="mc-buttons">
+                    <button class="mc-answer" data-answer="incorrect">It is made of paper</button>
+                    <button class="mc-answer" data-answer="correct">It is digital money used online</button>
+                    <button class="mc-answer" data-answer="incorrect">It is used to buy candy</button>
+                    <button class="mc-answer" data-answer="incorrect">It is a type of toy</button>
+                </div>
+                <p id="mc-feedback"></p>
+            </div>
+            
+            <!-- Activity 3: Select the Correct Term -->
+            <div class="activity" id="slide3" data-question="___________ is like an online notebook that keeps track of all transactions." data-correct-answer="Blockchain" data-options='["Cryptocurrency", "Blockchain", "Wallet", "Node"]' data-explanation="Blockchain is like an online notebook where all the transactions are recorded.">
+                <h2 class="fib-header">Select the Correct Term</h2>
+                <p class="fib-question">___________ is like an online notebook that keeps track of all transactions.</p>
+                <div class="fib-buttons">
+                    <!-- Buttons will be dynamically added here -->
+                </div>
+                <p id="fib-feedback"></p>
+            </div>
+            
+            <!-- Activity 4: Select the Correct Term -->
+            <div class="activity" id="slide4" data-question="A way to keep information safe and secure is called ___________." data-correct-answer="cryptography" data-options='["cryptography", "Blockchain", "Wallet", "Node"]' data-explanation="Cryptography is a method used to secure information and keep it private.">
+                <h2 class="fib-header">Select the Correct Term</h2>
+                <p class="fib-question">A way to keep information safe and secure is called ___________</p>
+                <div class="fib-buttons">
+                    <!-- Buttons will be dynamically added here -->
+                </div>
+                <p id="fib-feedback"></p>
+            </div>
+            <script src="fill in the blank/fill_in_blank.js"></script>
+            
+            <!-- Activity 5: Matching Pairs -->
+            <div class="activity" id="slide5">
+                <h2 class="mp-header">Matching Pairs</h2>
+                <div class="matching-pairs">
+                    <div class="mp-terms"></div>
+                    <div class="mp-definitions"></div>
+                </div>
+                <p id="mp-feedback"></p>
+            </div>
+            <script src="matching pairs/matching_pairs.js"></script>
+            
+            <!-- Activity 6: Word Fill -->
+            <div class="activity" id="slide6">
+                <h2 class="header">Fill in the Word</h2>
+                <p class="definition">A decentralized digital ledger where transactions are recorded.</p>
+                <div class="word" id="word">
+                    <!-- Empty spans for letters -->
+                </div>
+                <div class="letters">
+                    <!-- Letter buttons will be dynamically added here -->
+                </div>
+                <p id="feedback"></p>
+                <p id="feedback5"></p>
+            </div>
+            <script src="word fill/word_fill.js"></script>
+
+            <!-- Navigation Buttons -->
+            <div class="navigation">
+                <button id="prevBtn" class="nav-button" onclick="prevActivity()">Previous</button>
+                <button id="nextBtn" class="nav-button" onclick="nextActivity()">Next</button>
+            </div>
+            
+        </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <p id="modal-text"></p>
+            </div>
+        </div>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const dateElement = document.getElementById("current-date");
-            const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
-            const today = new Date();
-            dateElement.textContent = today.toLocaleDateString("en-US", options);
-        });
+        let currentActivity = 0;
+        const activities = document.querySelectorAll('.activity');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function showActivity(index) {
+            activities.forEach((activity, i) => {
+                activity.classList.toggle('active', i === index);
+            });
+            prevBtn.disabled = index === 0;
+        }
+
+        function nextActivity() {
+            if (currentActivity < activities.length - 1) {
+                currentActivity++;
+                showActivity(currentActivity);
+            }
+        }
+
+        function prevActivity() {
+            if (currentActivity > 0) {
+                currentActivity--;
+                showActivity(currentActivity);
+            }
+        }
+
+        // Initial display
+        showActivity(currentActivity);
     </script>
+    <script src="multiple choice/multiple_choice.js"></script>
 </body>
 </html>
-
