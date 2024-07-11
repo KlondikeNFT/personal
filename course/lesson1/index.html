@@ -13,212 +13,394 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap">
     <link rel="stylesheet" href="../course.css">
     <style>
-        .activity {
-            display: none;
-        }
-        .activity.active {
-            display: block;
-        }
-        .navigation {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .nav-button {
-            margin-top: 50px;
-            padding-left: 25px;
-            padding-right: 25px;
-            background-color: #dbcdb1;
-            color: #484848;
-            cursor: pointer;
-            font-size: 1em;
-            border: none;
-            border-radius: 0;
-            box-shadow: 0 0 0 2px #484848, 0 0 0 5px #dbcdb1, 0 0 0 8px #484848;
-        }
-        .nav-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: #dbcdb1;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-            text-align: center;
-            box-shadow: 0 0 0 2px #484848, 0 0 0 5px #dbcdb1, 0 0 0 8px #484848;
-        }
-        .modal-close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .modal-close:hover,
-        .modal-close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
+      .activity {
+        display: none;
+      }
+      .activity.active {
+        display: block;
+      }
+      .navigation {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .nav-button {
+        margin-top: 50px;
+        padding-left: 25px;
+        padding-right: 25px;
+        background-color: #dbcdb1;
+        color: #484848;
+        cursor: pointer;
+        font-size: 1em;
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 0 0 2px #484848, 0 0 0 5px #dbcdb1, 0 0 0 8px #484848;
+      }
+      .nav-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-content {
+        background-color: #dbcdb1;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        text-align: center;
+        box-shadow: 0 0 0 2px #484848, 0 0 0 5px #dbcdb1, 0 0 0 8px #484848;
+      }
+      .modal-close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .modal-close:hover,
+      .modal-close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <div class="text-wrapper">Klondike</div>
-        <div class="banner"></div>
-        <div class="banner-2"></div>
-        <div class="banner-3"></div>
-        <div class="nav-wrapper">
-            <div class="buttons">
-                <a href="../../index.html" class="button">Home</a>
-                <a href="../../about-me.html" class="button">About Me</a>
-                <a href="../index.html" class="button">Back to Course</a>
-            </div>
-            <div id="current-date" class="date-wrapper"></div>
+      <div class="text-wrapper">Klondike</div>
+      <div class="banner"></div>
+      <div class="banner-2"></div>
+      <div class="banner-3"></div>
+      <div class="nav-wrapper">
+        <div class="buttons">
+          <a href="../../index.html" class="button">Home</a>
+          <a href="../../about-me.html" class="button">About Me</a>
+          <a href="../index.html" class="button">Back to Course</a>
         </div>
+        <div id="current-date" class="date-wrapper"></div>
+      </div>
     </div>
     <div class="content">
-        <div class="container" style="box-shadow: none;">
-            <!-- Slide 1: Introduction -->
-            <div class="activity active" id="slide0">
-                <h1 class="header">Lesson 1: What is Cryptocurrency?</h1>
-                <p>Welcome to Lesson 1. In this lesson, you will learn the basics of cryptocurrency, its features, and the technology that underpins it. Let's get started!</p>
-            </div>
-
-            <!-- Activity 1: True or False -->
-            <div class="activity" id="slide1">
-                <h2 class="torf-header">True or False</h2>
-                <p class="torf-question">Cryptocurrency is a type of digital money that can be used online.</p>
-                <div class="torf-buttons">
-                    <button class="torf-answer" data-answer="true">True</button>
-                    <button class="torf-answer" data-answer="false">False</button>
-                </div>
-                <p id="torf-feedback"></p>
-            </div>
-            <script src="../../true or false/torf.js"></script>
-            
-            <!-- Activity 2: Multiple Choice -->
-            <div class="activity" id="slide2">
-                <h2 class="mc-header">Multiple Choice</h2>
-                <p class="mc-question">What is the primary feature of cryptocurrency?</p>
-                <div class="mc-buttons">
-                    <button class="mc-answer" data-answer="incorrect">It is made of paper</button>
-                    <button class="mc-answer" data-answer="correct">It is digital money used online</button>
-                    <button class="mc-answer" data-answer="incorrect">It is used to buy candy</button>
-                    <button class="mc-answer" data-answer="incorrect">It is a type of toy</button>
-                </div>
-                <p id="mc-feedback"></p>
-            </div>
-            
-            <!-- Activity 3: Select the Correct Term -->
-            <div class="activity" id="slide3" data-question="___________ is like an online notebook that keeps track of all transactions." data-correct-answer="Blockchain" data-options='["Cryptocurrency", "Blockchain", "Wallet", "Node"]' data-explanation="Blockchain is like an online notebook where all the transactions are recorded.">
-                <h2 class="fib-header">Select the Correct Term</h2>
-                <p class="fib-question">___________ is like an online notebook that keeps track of all transactions.</p>
-                <div class="fib-buttons">
-                    <!-- Buttons will be dynamically added here -->
-                </div>
-                <p id="fib-feedback"></p>
-            </div>
-            
-            <!-- Activity 4: Select the Correct Term -->
-            <div class="activity" id="slide4" data-question="A way to keep information safe and secure is called ___________." data-correct-answer="cryptography" data-options='["cryptography", "Blockchain", "Wallet", "Node"]' data-explanation="Cryptography is a method used to secure information and keep it private.">
-                <h2 class="fib-header">Select the Correct Term</h2>
-                <p class="fib-question">A way to keep information safe and secure is called ___________</p>
-                <div class="fib-buttons">
-                    <!-- Buttons will be dynamically added here -->
-                </div>
-                <p id="fib-feedback"></p>
-            </div>
-            <script src="../../fill in the blank/fill_in_blank.js"></script>
-            
-            <!-- Activity 5: Matching Pairs -->
-            <div class="activity" id="slide5">
-                <h2 class="mp-header">Matching Pairs</h2>
-                <div class="matching-pairs">
-                    <div class="mp-terms"></div>
-                    <div class="mp-definitions"></div>
-                </div>
-                <p id="mp-feedback"></p>
-            </div>
-            <script src="../../matching pairs/matching_pairs.js"></script>
-            
-            <!-- Activity 6: Word Fill -->
-            <div class="activity" id="slide6">
-                <h2 class="header">Fill in the Word</h2>
-                <p class="definition">A decentralized digital ledger where transactions are recorded.</p>
-                <div class="word" id="word">
-                    <!-- Empty spans for letters -->
-                </div>
-                <div class="letters">
-                    <!-- Letter buttons will be dynamically added here -->
-                </div>
-                <p id="feedback"></p>
-                <p id="feedback5"></p>
-            </div>
-            <script src="../../word fill/word_fill.js"></script>
-
-            <!-- Navigation Buttons -->
-            <div class="navigation">
-                <button id="prevBtn" class="nav-button" onclick="prevActivity()">Previous</button>
-                <button id="nextBtn" class="nav-button" onclick="nextActivity()">Next</button>
-            </div>
-            
+      <div class="container" style="box-shadow: none">
+        <!-- Slide 1: Introduction -->
+        <div class="activity active" id="slide0">
+          <h1 class="header">Lesson 1: What is Cryptocurrency?</h1>
+          <p>
+            Welcome to Lesson 1. In this lesson, you will learn the basics of
+            cryptocurrency, its features, and the technology that underpins it.
+            Let's get started!
+          </p>
         </div>
 
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="modal-close">&times;</span>
-                <p id="modal-text"></p>
-            </div>
+        <!-- Activity 1: True or False -->
+        <div
+          class="activity"
+          id="slide1"
+          data-correct-answer="true"
+          data-explanation-true="Correct! Cryptocurrencies are forms of money that exist digitally and can be used online. You can also store them offline in special wallets."
+          data-explanation-false="Incorrect. Cryptocurrencies are forms of money that exist digitally and can be used online. You can also store them offline in special wallets."
+        >
+          <h2 class="torf-header">True or False</h2>
+          <p class="torf-question">
+            Cryptocurrencies are forms of money that exist digitally and can be
+            used online.
+          </p>
+          <div class="torf-buttons">
+            <button class="torf-answer" data-answer="true">True</button>
+            <button class="torf-answer" data-answer="false">False</button>
+          </div>
+          <p id="torf-feedback"></p>
         </div>
+
+        <!-- Activity 2: True or False -->
+        <div
+          class="activity"
+          id="slide2"
+          data-correct-answer="false"
+          data-explanation-true="False! No single company or person controls cryptocurrencies. They are decentralized, which means many people and computers around the world help to manage them."
+          data-explanation-false="Correct! No single company or person controls cryptocurrencies. They are decentralized, which means many people and computers around the world help to manage them."
+        >
+          <h2 class="torf-header">True or False</h2>
+          <p class="torf-question">
+            Cryptocurrencies are controlled by one big company.
+          </p>
+          <div class="torf-buttons">
+            <button class="torf-answer" data-answer="true">True</button>
+            <button class="torf-answer" data-answer="false">False</button>
+          </div>
+          <p id="torf-feedback"></p>
+        </div>
+
+        <!-- Activity 3: Multiple Choice -->
+        <div
+          class="activity"
+          id="slide3"
+          data-question="What is the primary feature of cryptocurrency?"
+          data-correct-answer="It is digital money used online"
+          data-options='["It is made of paper", "It is digital money used online", "It is used to buy candy", "It is a type of toy"]'
+          data-explanations='{"It is made of paper": "A physical form of money is not a cryptocurrency.", "It is digital money used online": "Correct! The main feature of cryptocurrency is that it is digital money used for buying things, sending to friends, or saving.", "It is used to buy candy": "Although you can purchase candy with cryptocurrency, it is not the main purpose.", "It is a type of toy": "Cryptocurrency is not a type of toy."}'
+        >
+          <h2 class="mc-header">Multiple Choice</h2>
+          <p class="mc-question"></p>
+          <div class="mc-buttons">
+            <!-- Buttons will be dynamically added here -->
+          </div>
+          <p id="mc-feedback"></p>
+        </div>
+
+        <!-- Activity 4: Select the Correct Term -->
+        <div
+          class="activity"
+          id="slide4"
+          data-question="___________ is like an online notebook that keeps track of all transactions."
+          data-correct-answer="Blockchain"
+          data-options='["Cryptocurrency", "Blockchain", "Wallet", "Node"]'
+          data-explanation="Blockchain is like an online notebook where all the transactions (money sent and received) are recorded."
+        >
+          <h2 class="fib-header">Select the Correct Term</h2>
+          <p class="fib-question">
+            ___________ is like an online notebook that keeps track of all
+            transactions.
+          </p>
+          <div class="fib-buttons">
+            <!-- Buttons will be dynamically added here -->
+          </div>
+          <p id="fib-feedback"></p>
+        </div>
+
+        <!-- Activity 5: Multiple Choice -->
+        <div
+          class="activity"
+          id="slide5"
+          data-question="What keeps track of all cryptocurrency transactions?"
+          data-correct-answer="A blockchain"
+          data-options='["A notebook", "A piggy bank", "A blockchain", "A treasure chest"]'
+          data-explanations='{"A notebook": "Incorrect. Blockchain is the technology that keeps track of all transactions made with cryptocurrency.", "A piggy bank": "Incorrect. Blockchain is the technology that keeps track of all transactions made with cryptocurrency.", "A blockchain": "Correct! Blockchain is the technology that keeps track of all transactions made with cryptocurrency.", "A treasure chest": "Incorrect. Blockchain is the technology that keeps track of all transactions made with cryptocurrency."}'
+        >
+          <h2 class="mc-header">Multiple Choice</h2>
+          <p class="mc-question"></p>
+          <div class="mc-buttons">
+            <!-- Buttons will be dynamically added here -->
+          </div>
+          <p id="mc-feedback"></p>
+        </div>
+        <script src="matching pairs/matching_pairs.js" defer></script>
+
+        <!-- Activity 6: Matching Pairs -->
+        <div
+          class="activity"
+          id="slide6"
+          data-pairs='[{"term": "Wallet", "definition": "A digital place to store your cryptocurrency."}, {"term": "Node", "definition": "A computer that helps run and secure the blockchain."}, {"term": "Mining", "definition": "The process of adding new transactions to the blockchain."}, {"term": "Concensus", "definition": "When everyone agrees on something, like a decision."}]'
+        >
+          <h2 class="mp-header">Matching Pairs</h2>
+          <div class="matching-pairs">
+            <div class="mp-terms"></div>
+            <div class="mp-definitions"></div>
+          </div>
+          <p id="mp-feedback"></p>
+        </div>
+        <script src="matching pairs/matching_pairs.js"></script>
+
+        <!-- Activity 7: True or False -->
+        <div
+          class="activity"
+          id="slide7"
+          data-correct-answer="true"
+          data-explanation-true="True! Blockchain technology is designed to ensure the security and integrity of cryptocurrency transactions."
+          data-explanation-false="It's True! Blockchain technology is designed to ensure the security and integrity of cryptocurrency transactions."
+        >
+          <h2 class="torf-header">True or False</h2>
+          <p class="torf-question">
+            Blockchain helps to keep cryptocurrency transactions safe and
+            secure.
+          </p>
+          <div class="torf-buttons">
+            <button class="torf-answer" data-answer="true">True</button>
+            <button class="torf-answer" data-answer="false">False</button>
+          </div>
+          <p id="torf-feedback"></p>
+        </div>
+
+        <!-- Activity 8: Word Fill -->
+        <div
+          class="activity"
+          id="slide8"
+          data-word="WALLET"
+          data-letters='["W", "V", "Y", "L", "O", "T", "C", "Z", "K", "L", "F", "H", "E", "A", "T", "I", "S", "N"]'
+          data-explanation="Correct! A wallet is where you store your cryptocurrency safely."
+        >
+          <h2 class="header">Fill in the Word</h2>
+          <p class="definition">A safe place to store digital money.</p>
+          <div class="word">
+            <!-- Empty spans for letters will be dynamically added here -->
+          </div>
+          <div class="letters">
+            <!-- Letter buttons will be dynamically added here -->
+          </div>
+          <p id="feedback"></p>
+        </div>
+        <script src="word fill/word_fill.js"></script>
+
+        <!-- Activity 9: Select the Correct Term -->
+        <div
+          class="activity"
+          id="slide9"
+          data-question="A computer that helps manage the blockchain is called a  ___________."
+          data-correct-answer="Node"
+          data-options='["Minion", "Node", "Worker", "Robot"]'
+          data-explanation="Correct! A node is a computer that helps run the blockchain network."
+        >
+          <h2 class="fib-header">Select the Correct Term</h2>
+          <p class="fib-question">
+            A way to keep information safe and secure is called ___________
+          </p>
+          <div class="fib-buttons">
+            <!-- Buttons will be dynamically added here -->
+          </div>
+          <p id="fib-feedback"></p>
+        </div>
+        <script src="fill in the blank/fill_in_blank.js"></script>
+
+        <!-- Activity 10: Select the Correct Term -->
+        <div
+          class="activity"
+          id="slide10"
+          data-question="A way to keep information safe and secure is called ___________."
+          data-correct-answer="cryptography"
+          data-options='["cryptography", "Blockchain", "Wallet", "Node"]'
+          data-explanation="Cryptography is a method used to secure information and keep it private."
+        >
+          <h2 class="fib-header">Select the Correct Term</h2>
+          <p class="fib-question">
+            A way to keep information safe and secure is called ___________
+          </p>
+          <div class="fib-buttons">
+            <!-- Buttons will be dynamically added here -->
+          </div>
+          <p id="fib-feedback"></p>
+        </div>
+        <script src="fill in the blank/fill_in_blank.js"></script>
+
+        <!-- Activity 11: Matching Pairs -->
+        <div
+          class="activity"
+          id="slide11"
+          data-pairs='[{"term": "Cryptocurrency", "definition": "A digital or virtual form of currency that uses cryptography for security."}, {"term": "Digital Currency", "definition": "Money that exists only in digital form, not in physical form."}, {"term": "Blockchain", "definition": "A decentralized digital ledger where transactions are recorded."}, {"term": "Cryptography", "definition": "A way to keep information safe and private."}]'
+        >
+          <h2 class="mp-header">Matching Pairs</h2>
+          <div class="matching-pairs">
+            <div class="mp-terms"></div>
+            <div class="mp-definitions"></div>
+          </div>
+          <p id="mp-feedback"></p>
+        </div>
+        <script src="matching pairs/matching_pairs.js"></script>
+
+        <!-- Activity 12: Multiple Choice -->
+        <div
+          class="activity"
+          id="slide12"
+          data-question="Which of these is NOT a feature of blockchain?"
+          data-correct-answer="It is controlled by one person"
+          data-options='["It is decentralized", "It is transparent", "It is controlled by one person", "It is secure"]'
+          data-explanations='{"It is decentralized": "Incorrect. One of the core features of blockchain technology is its decentralized nature, meaning it is not controlled by a single entity but rather by a network of computers.", "It is transparent": "Incorrect. Blockchain technology is designed to be transparent, allowing anyone to verify and audit the data recorded on the blockchain.", "It is controlled by one person": "Correct! Blockchain is not controlled by one person; it is managed by many people and computers around the world.", "It is secure": "Incorrect. Blockchain is known for its security features, which include cryptographic techniques that protect the data and ensure its integrity."}'
+        >
+          <h2 class="mc-header">Multiple Choice</h2>
+          <p class="mc-question"></p>
+          <div class="mc-buttons">
+            <!-- Buttons will be dynamically added here -->
+          </div>
+          <p id="mc-feedback"></p>
+        </div>
+
+        <!-- Activity 13: Word Fill -->
+        <div
+          class="activity"
+          id="slide13"
+          data-word="BLOCKCHAIN"
+          data-letters='["B", "V", "Y", "L", "O", "T", "C", "Z", "K", "C", "F", "H", "J", "A", "T", "I", "S", "N"]'
+          data-explanation="Correct! A blockchain is a decentralized digital ledger where transactions are recorded."
+        >
+          <h2 class="header">Fill in the Word</h2>
+          <p class="definition">
+            A decentralized digital ledger where transactions are recorded.
+          </p>
+          <div class="word">
+            <!-- Empty spans for letters will be dynamically added here -->
+          </div>
+          <div class="letters">
+            <!-- Letter buttons will be dynamically added here -->
+          </div>
+          <p id="feedback"></p>
+        </div>
+        <script src="word fill/word_fill.js"></script>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation">
+          <button id="prevBtn" class="nav-button" onclick="prevActivity()">
+            Previous
+          </button>
+          <button id="nextBtn" class="nav-button" onclick="nextActivity()">
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="modal-close">&times;</span>
+          <p id="modal-text"></p>
+        </div>
+      </div>
     </div>
+    <script src="../../true or false/torf.js"></script>
+   <script src="../../multiple choice/multiple_choice.js" defer></script>
+    <script src="../../fill in the blank/fill_in_blank.js"></script>
+    <script src="../../matching pairs/matching_pairs.js"></script>
+    <script src="../../word fill/word_fill.js"></script>
     <script>
-        let currentActivity = 0;
-        const activities = document.querySelectorAll('.activity');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+      let currentActivity = 0;
+      const activities = document.querySelectorAll(".activity");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
 
-        function showActivity(index) {
-            activities.forEach((activity, i) => {
-                activity.classList.toggle('active', i === index);
-            });
-            prevBtn.disabled = index === 0;
+      function showActivity(index) {
+        activities.forEach((activity, i) => {
+          activity.classList.toggle("active", i === index);
+        });
+        prevBtn.disabled = index === 0;
+      }
+
+      function nextActivity() {
+        if (currentActivity < activities.length - 1) {
+          currentActivity++;
+          showActivity(currentActivity);
         }
+      }
 
-        function nextActivity() {
-            if (currentActivity < activities.length - 1) {
-                currentActivity++;
-                showActivity(currentActivity);
-            }
+      function prevActivity() {
+        if (currentActivity > 0) {
+          currentActivity--;
+          showActivity(currentActivity);
         }
+      }
 
-        function prevActivity() {
-            if (currentActivity > 0) {
-                currentActivity--;
-                showActivity(currentActivity);
-            }
-        }
-
-        // Initial display
-        showActivity(currentActivity);
+      // Initial display
+      showActivity(currentActivity);
     </script>
-    <script src="../../multiple choice/multiple_choice.js"></script>
-</body>
+  </body>
 </html>
