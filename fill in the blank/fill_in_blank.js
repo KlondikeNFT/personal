@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const activities = document.querySelectorAll('.activity[data-question]');
+    const activities = document.querySelectorAll('.activity[data-question][data-options][data-correct-answer][data-explanation]');
     const modal = document.getElementById('myModal');
     const modalClose = document.querySelector('.modal-close');
     const modalText = document.getElementById('modal-text');
 
-    // Initialize Select the Correct Term activities
     activities.forEach(activity => {
         const question = activity.dataset.question;
         const options = JSON.parse(activity.dataset.options);
@@ -16,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         questionElement.textContent = question;
 
-        if (buttonsContainer.childElementCount === 0) { // Ensure buttons are created only once
+        if (buttonsContainer.childElementCount === 0) {
             options.forEach(option => {
                 const button = document.createElement('button');
                 button.textContent = option;
@@ -26,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         feedbackElement.textContent = 'Correct!';
                         feedbackElement.style.color = 'green';
                         button.classList.add('correct');
+                        button.style.opacity = 0.5;
                         showModal(explanation);
                         disableButtons(activity);
                     } else {
@@ -47,13 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 button.style.opacity = 0.5;
             }
         });
-    }
-
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
     }
 
     function showModal(message) {
